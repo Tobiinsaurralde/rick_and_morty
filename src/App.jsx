@@ -1,44 +1,69 @@
+import { useState } from 'react';
+import { Route, Routes, useNavigate } from "react-router-dom";
 import './App.css';
 import Cards from './components/cards/Cards.jsx';
 import Nav from './components/nav/Nav.jsx';
-import { useState } from 'react';
 import axios from "axios";
+import About from './components/about/about.jsx';
+import Detail from './components/detail/Detail.jsx';
+import NotFound from './components/notfound/NotFound.jsx';
 
 const URL = "https://rym2.up.railway.app/api/character";
-const API_KEY = "henrystaff"
+const API_KEY = "henrystaff";
 
 function App() {
-
-   const [characters,setCharacters] = useState([]);
    
+   const [characters, setCharacters] = useState([]);
+
+   const navigate = useNavigate();
+
    function onSearch(id) {
       const characterId = characters.filter(
          char => char.id === Number(id)
-         )
-if (characterId.length){
-   return alert (`${characterId[0].name} ya existe!` );
-}
-
+      )
+      if(characterId.length) {
+         //* [ {name:Rick, id:1, .... } ]
+         return alert(`${characterId[0].name} ya existe!`)
+      }
       axios(`${URL}/${id}?key=${API_KEY}`)
-      .then(
-         ({ data }) => {
-            if (data.name) {
-               setCharacters([...characters, data]);
-            } else {
-               window.alert('¡No hay personajes con este ID!');
-            }
-         });
+         .then(
+            ({ data }) => {
+               if (data.name) {
+                  // console.log(data)
+                  setCharacters([...characters, data]);
+               } else {
+                  window.alert('¡El id debe ser un número entre 1 y 826!');
+               }
+            });
+      navigate("/home");
    }
 
-const onClose = id => {
-   setCharacters(characters.filter (char => char.id !== Number(id)))
-}
+   const onClose = id => {
+      setCharacters(characters.filter(char => char.id !== Number(id)))
+   }
 
    return (
       <div className='App'>
          <Nav onSearch={onSearch} />
-         <hr/>
-         <Cards characters={characters} onClose={onClose}/>
+         <Routes>
+            <Route 
+               path="/home"
+               element={<Cards characters={characters} onClose={onClose} />}
+            />
+            <Route
+               path="/about"
+               element={<About />}
+            />
+            <Route
+               path="/detail/:id"
+               element={<Detail />}
+            />
+            <Route
+               path="*"
+               element={<NotFound />}
+            />
+         </Routes>
+         <hr />
       </div>
    );
 }
