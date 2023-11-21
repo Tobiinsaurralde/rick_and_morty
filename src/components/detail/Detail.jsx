@@ -7,12 +7,10 @@ const API_KEY = "henrystaff";
 
 export default function Detail(props) {
 
-   const { id } = useParams(); //* { id: 429 }
-   // console.log(id);
+   const { id } = useParams();
    const [character, setCharacter] = useState({});
    useEffect(() => {
       axios(`${URL}/${id}?key=${API_KEY}`)
-         //* { timpo:x, status:x, data: { Rick } }
          .then(
             ({ data }) => {
                if (data.name) {

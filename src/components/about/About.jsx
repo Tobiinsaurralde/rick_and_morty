@@ -7,9 +7,8 @@ export default function About(props) {
         <h1>About me</h1>
         <p>Visita mi
           < a 
-            href="https://github.com/Tobiinsaurralde"
+            href=" https://github.com/Tobiinsaurralde"
             target="_blank"  
-
           >  
           GitHub</a>
         </p>
