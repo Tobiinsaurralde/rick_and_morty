@@ -2,10 +2,13 @@ import './App.css';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import About from './components/about/about.jsx';
+import { useDispatch } from 'react-redux';
+import { removeFav } from './redux/actions.js';
+import About from './components/about/About.jsx';
 import Cards from './components/cards/Cards.jsx';
 import Detail from './components/detail/Detail.jsx';
-import Form from './components/form/form.jsx';
+import Favorites from './components/favorites/Favorites.jsx';
+import Form from './components/form/Form.jsx';
 import Nav from './components/nav/Nav.jsx';
 import NotFound from './components/notfound/NotFound.jsx';
 
@@ -16,6 +19,7 @@ function App() {
    
    const navigate = useNavigate();
    const location = useLocation();
+   const dispatch = useDispatch();
 
    const [characters, setCharacters] = useState([]);
 
@@ -30,6 +34,7 @@ function App() {
          .then(
             ({ data }) => {
                if (data.name) {
+               
                   setCharacters([...characters, data]);
                } else {
                   window.alert('¡El id debe ser un número entre 1 y 826!');
@@ -38,11 +43,12 @@ function App() {
       navigate("/home");
    }
 
-   const onClose = id => {
-      setCharacters(characters.filter(char => char.id !== Number(id)))
+   const onClose = (id) => {
+      setCharacters(characters.filter(char => char.id !== Number(id)));
+      dispatch(removeFav(id));
    }
 
-   //* Login
+   
    const [access, setAccess] = useState(false);
    const EMAIL = 'ejemplo@gmail.com';
    const PASSWORD = '123456';
@@ -61,7 +67,9 @@ function App() {
    }
 
    useEffect(() => {
-      !access && navigate('/');
+  
+      !access && navigate('/home');
+   
    }, [access]);
 
    return (
@@ -87,11 +95,13 @@ function App() {
                element={<Detail />}
             />
             <Route
+               path="/favorites"
+               element={<Favorites onClose={onClose} />} />
+            <Route
                path="*"
                element={<NotFound />}
             />
          </Routes>
-         <hr />
       </div>
    );
 }
