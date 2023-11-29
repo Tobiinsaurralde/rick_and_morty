@@ -19,7 +19,10 @@ export default function Nav(props) {
          <button onClick={props.logout} > 
           <img
         src={ banner}
-        style={{width:"16px"}}
+        style={{
+         width: "18px",
+         padding:0,
+      }}
         alt=""
       />
      </button>

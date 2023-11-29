@@ -29,6 +29,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image:url("https://media.istockphoto.com/id/178149253/es/foto/espacio-profundo-de-fondo.jpg?s=612x612&w=0&k=20&c=6xWIbkk18IrLShPj1AyUSfjy4EznbIoHs6lEn6Le2o8=");
+  background-size:contain; 
 }
 
 h1 {

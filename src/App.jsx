@@ -30,6 +30,7 @@ function App() {
       if(characterId.length) {
          return alert(`${characterId[0].name} ya existe!`)
       }
+     
       axios(`${URL}/${id}?key=${API_KEY}`)
          .then(
             ({ data }) => {
@@ -94,6 +95,7 @@ function App() {
                path="/detail/:id"
                element={<Detail />}
             />
+
             <Route
                path="/favorites"
                element={<Favorites onClose={onClose} />} />
@@ -103,6 +105,7 @@ function App() {
             />
          </Routes>
       </div>
+      
    );
 }
 
