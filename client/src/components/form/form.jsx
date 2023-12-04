@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import validation from "../../utils/validation";
-const banner = "https://http2.mlstatic.com/D_NQ_NP_898822-MLA44334482553_122020-O.webp";
+const banner = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/2560px-Rick_and_Morty.svg.png";
 
 export default function Form(props) {
 
@@ -34,7 +34,7 @@ export default function Form(props) {
     <div>
       <img
         src={banner}
-        style={{width:"300px"}}
+        style={{width:"300px", backgroundColor: "transparent" }}
         alt=""
       />
 

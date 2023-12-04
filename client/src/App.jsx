@@ -12,6 +12,7 @@ import Form from './components/form/Form.jsx';
 import Nav from './components/nav/Nav.jsx';
 import NotFound from './components/notfound/NotFound.jsx';
 
+
 const URL = "https://rym2.up.railway.app/api/character";
 const API_KEY = "henrystaff";
 
@@ -30,6 +31,7 @@ function App() {
       if(characterId.length) {
          return alert(`${characterId[0].name} ya existe!`)
       }
+     
       axios(`${URL}/${id}?key=${API_KEY}`)
          .then(
             ({ data }) => {
@@ -62,7 +64,7 @@ function App() {
       }
    }
 
-   function logout() {
+   function logout() { 
       setAccess(false);
    }
 
@@ -94,6 +96,7 @@ function App() {
                path="/detail/:id"
                element={<Detail />}
             />
+
             <Route
                path="/favorites"
                element={<Favorites onClose={onClose} />} />
@@ -103,6 +106,7 @@ function App() {
             />
          </Routes>
       </div>
+      
    );
 }
 

@@ -5,15 +5,9 @@ const initialState = {
   allCharacters: []
 }
 
-//* allCharacters = [ { Rick, M}, {Morty, M}, {Beth, F}, {Summer, F} ]
-
-//* myFavorites = [ {Beth, F}, {Summer, F} ]
-//* => <Favorites /> => <Card />
-
-
 export default function reducer(state = initialState, { type, payload }) {
-  //* action = { type:.., payload:...}
-  // const { type, payload } = action;
+
+
   switch(type) {
     case ADD_FAV: {
       return {
@@ -33,7 +27,7 @@ export default function reducer(state = initialState, { type, payload }) {
       }
     }
     case FILTER:{
-      //* { type: FILTER, payload: "FEMALE" }
+     
       if(payload === "All") return {
         ...state,
         myFavorites: state.allCharacters

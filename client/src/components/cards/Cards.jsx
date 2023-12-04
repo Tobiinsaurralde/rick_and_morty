@@ -2,14 +2,13 @@ import Card from "../card/Card.jsx";
 
 
 export default function Cards({ characters, onClose }) {
+   const cardsContainers ={
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "space-evenly"
+   }
    return (
-      <div
-         style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly"
-         }}
-      >
+      <div style={cardsContainers}>
          {
             characters.map(character => (
                <Card
