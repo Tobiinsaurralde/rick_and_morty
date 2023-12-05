@@ -3,7 +3,6 @@ import SearchBar from "../searchbar/SearchBar";
 import styled from "styled-components";
 const banner ="https://cdn.icon-icons.com/icons2/2518/PNG/512/logout_icon_151219.png"
 
-// Mueve la definición de MyButton fuera de la función de renderización
 const MyButton = styled.button`
   background-color: darkslategrey;
   color: wheat;

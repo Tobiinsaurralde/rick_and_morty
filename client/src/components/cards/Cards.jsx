@@ -2,6 +2,7 @@ import Card from "../card/Card.jsx";
 
 
 export default function Cards({ characters, onClose }) {
+   
    const cardsContainers ={
       display: "flex",
       flexWrap: "wrap",
