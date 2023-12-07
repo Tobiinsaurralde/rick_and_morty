@@ -1,13 +1,20 @@
+
 const axios = require("axios");
 const URL = "https://rym2.up.railway.app/api/character";
 const API_KEY = "henrystaff";
 
 const getCharById = (res, id) => {
   axios.get(`${URL}/${id}?key=${API_KEY}`)
-    //* => retorna una PROMESA => pending
     .then(response => response.data)
     .then(data => {
-      //* { id, name, status, ... }
+const getCharById = (req, res) => {
+  const { id } = req.params;
+  axios
+    .get(`${URL}/${id}`) 
+    .then(({ data }) => {
+      const {
+        id, status, name, species, origin, image, gender, location
+      } = data;
       const character = {
         id: data.id,
         name: data.name,
@@ -16,11 +23,16 @@ const getCharById = (res, id) => {
         origin: data.origin,
         image: data.image,
         status: data.status,
-        location: data.location
+        location: data.location,
+        id, status, name, species, origin, image, gender, location
       };
       return res
         .writeHead(200, { "Content-Type": "application/json" })
         .end(JSON.stringify(character));
+
+        return character.name
+        ? res.json(character)
+        : res.status(404).send("Not fount")
     })
     .catch(error => {
       return res
@@ -28,5 +40,8 @@ const getCharById = (res, id) => {
         .end(error.message)
       })
 }
+      return res.status(500).send(error.message);
+    });
+};
 
 module.exports = getCharById;
