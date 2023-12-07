@@ -24,25 +24,25 @@ function App() {
 
    const [characters, setCharacters] = useState([]);
 
-   function onSearch(id) {
-      const characterId = characters.filter(
-         char => char.id === Number(id)
-      )
-      if(characterId.length) {
-         return alert(`${characterId[0].name} ya existe!`)
+   async function onSearch(id) {
+      try {
+         const characterId = characters.filter(
+            char => char.id === Number(id)
+         )
+         if(characterId.length) {
+            return alert(`${characterId[0].name} ya existe!`)}
+
+         const { data } = await axios.get(`${URL}/${id}?key=${API_KEY}`)
+         if (data.name) {
+             console.log(data)
+            setCharacters([...characters, data]);
+            navigate("/home");
+         } else {
+            alert('¡El id debe ser un número entre 1 y 826!');
+         }
+      } catch (error) {
+         alert("El id debe ser un numero entre 1 y 826")
       }
-     
-      axios(`${URL}/${id}?key=${API_KEY}`)
-         .then(
-            ({ data }) => {
-               if (data.name) {
-               
-                  setCharacters([...characters, data]);
-               } else {
-                  window.alert('¡El id debe ser un número entre 1 y 826!');
-               }
-            });
-      navigate("/home");
    }
 
    const onClose = (id) => {
@@ -55,14 +55,20 @@ function App() {
    const EMAIL = 'ejemplo@gmail.com';
    const PASSWORD = '123456';
 
-   function login(userData) {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-         const { access } = data;
-         setAccess(data);
-         access && navigate('/home');
-      });
+   async function login(userData) {
+      try {
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const { data } = await axios(URL + `?email=${email}&password=${password}`);
+         if(data.access) {
+            setAccess(data.access);
+            navigate('/home');
+         } else {
+            alert("Credenciales incorrectas!");
+         }
+      } catch (error) {
+         alert(error.message);
+      }
    }
 
    function logout() { 
