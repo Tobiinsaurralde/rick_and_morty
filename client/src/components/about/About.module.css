@@ -1,0 +1,115 @@
+.flipCard {
+  background-color: transparent;
+  width: 245px;
+  height: 270px;
+  perspective: 1000px;
+  font-family: Georgia, serif;;
+  margin-left: auto;
+  margin-right: auto ;
+  transition: border-color 0.6s;
+}
+
+  .flipCardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    font-family: Georgia, serif;;
+  }
+ 
+  .flipCardFront, .flipCardBack {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    padding: 5px;
+    border-radius: 2em;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: normal;
+    text-align: center;
+    margin-left: auto;
+    margin-right:auto ;
+  }
+ 
+  .flipCardFront {
+    background: transparent;
+    border: 4px solid white;
+    backdrop-filter: blur(6px); 
+  }
+ 
+  .pfp {
+    border-radius: 35em;
+    fill: white;
+  }
+ 
+  .name {
+    margin-top: 15px;
+    font-size: 27px;
+    color: white;
+    font-weight: bold;
+    font-family: Georgia, serif;;
+  }
+ 
+  .flipCardBack {
+    background-color: #240d29;
+    border: 4px solid white;
+    transform: rotateY(180deg);
+    padding: 11px;
+    background: transparent;
+    align-items: normal;
+    border: 4px solid white;
+    backdrop-filter: blur(8px); 
+    margin-left: 0px;
+    margin-right:90px ;
+  }
+
+.flipCardBack:hover {
+  border-color: #26FBF1;  
+}
+  
+  .description {
+    margin-top: 6px;
+    font-size: 15px;
+    letter-spacing:3px;
+    color: #F5EBE8;
+    font-family: 'Georgia, serif;';
+  }
+ 
+  .icon {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 50%;
+  }
+  .socialbar {
+    background-color:transparent;
+    border-radius: 3em;
+    width: 80%;
+    padding: 14px;
+    margin-top: 11px;
+    margin-left: 10px;
+    color: #F5EBE8;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+ 
+  }
+ 
+  .socialbar svg {
+    transition: 0.4s;
+    width: 30px;
+    height: 30px;
+    color: #F5EBE8
+  }
+ 
+  .socialbar svg:hover {
+    color: #26FBF1;
+  }
+ 
+  .flipCard:hover .flipCardInner {
+    transform: rotateY(180deg);
+  }
+ 

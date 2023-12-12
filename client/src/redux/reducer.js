@@ -9,10 +9,10 @@ export default function reducer(state = initialState, { type, payload }) {
 
 
   switch(type) {
-    case 'ADD_FAV':
+    case ADD_FAV:
       return { ...state, myFavorites: payload, allCharacters: payload };
 
-      case 'REMOVE_FAV':
+      case REMOVE_FAV:
         return { ...state, myFavorites: payload };
     case FILTER:{
      

@@ -5,7 +5,7 @@
     margin: 20px;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 10px black ;
+    box-shadow: 0 10px 10px blue ;
     color :darkslategrey ;
      &:hover {
      box-shadow :0 5px 5px white ;
@@ -20,7 +20,7 @@
 }
 
 .container button {
-    background-color: darkslategrey;
+    background-color: darkcyan;
     margin:10px;
     &:hover{
         background-color: darkcyan;

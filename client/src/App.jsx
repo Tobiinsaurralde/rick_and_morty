@@ -34,7 +34,7 @@ function App() {
 
          const { data } = await axios.get(`${URL}/${id}?key=${API_KEY}`)
          if (data.name) {
-             console.log(data)
+
             setCharacters([...characters, data]);
             navigate("/home");
          } else {
@@ -55,19 +55,12 @@ function App() {
    const EMAIL = 'ejemplo@gmail.com';
    const PASSWORD = '123456';
 
-   async function login(userData) {
-      try {
-         const { email, password } = userData;
-         const URL = 'http://localhost:3001/rickandmorty/login/';
-         const { data } = await axios(URL + `?email=${email}&password=${password}`);
-         if(data.access) {
-            setAccess(data.access);
-            navigate('/home');
-         } else {
-            alert("Credenciales incorrectas!");
-         }
-      } catch (error) {
-         alert(error.message);
+   function login(userData) {
+      if (userData.password === PASSWORD && userData.email === EMAIL) {
+         setAccess(true);
+         navigate('/home');
+      } else {
+         alert("Credenciales incorrectas!");
       }
    }
 
