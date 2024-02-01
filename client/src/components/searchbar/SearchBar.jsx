@@ -1,59 +1,51 @@
-import React from "react";
-import styled from "styled-components";
+import {useState} from 'react';
+import styles from './SearchBar.module.css'
+import { AiFillGift } from "react-icons/ai";
+import { GrClearOption } from "react-icons/gr"
+import { MdPersonAddAlt1 } from "react-icons/md";
 
-const Container= styled.div`
-padding-bottom: 20px;
- padding-top: 20px;
- margin-auto;`
+const SearchBar = ({onSearch, clear}) => { //como props es un objeto con cosas, tengo que sacar a OnSearch con destructuring. Si no, deberia poner props.onSearch
 
-
- const Input= styled.input `
- border-radius:5px;
- height:40px;`
-
- const MyButton = styled.button`
-background-color: darkslategrey;
-color: wheat;
-&:hover {
- color: darkslategrey;
- background-color: darkolivegreen;
-}
-`;
-
-export default function SearchBar(props) {
-  const [id, setId] = React.useState("");
-
-  const handleChange = (event) => {
-    const { value } = event.target;
-    setId(value);
-  };
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    props.onSearch(id);
-    setId("");
-  };
-
-  const handleRandom = () => {
-    const randomNumber = Math.floor(Math.random() * 826) + 1;
-    props.onSearch(randomNumber);
-  };
+ const [id, setId] = useState('');
+   
+ const handleChange = (event) => {
+setId (event.target.value)
+ }  
+ function handleRandom() {
+   const numeroEnRango = Math.floor(Math.random()* 826) + 1;
+   return numeroEnRango;
+ }
  
-  return (
-    <Container>
-      <Input
-        type="text"
-        name="search"
-        id="search"
-        onChange={handleChange}
-        value={id}
-      />
-      <MyButton onClick={handleClick}>Agregar</MyButton>
-      <MyButton onClick={handleRandom}>Random</MyButton>
-
-    
-      <hr />
-      <h1>Por favor ingrese un ID...</h1>
-    </Container>
-  );
+const handleClear = () => {
+clear()
 }
+const handleClick =(event)=>{{ //Para tener 2 acciones en una misma fn.
+   event.preventDefault(); //event es solo para esta linea.
+   onSearch(id); //hago el onSearch, como lo hacia antes pero lo ponia directo en el onClick
+   setId(''); //Lo dejo vacio luego de que lo busque. No puedo ponerlo en handleChange porq lo harai acada vez q hay una
+}}
+
+   return (
+      <div className={styles.container} >
+
+         <input
+         placeholder='Insert ID...' 
+         autoComplete='off'
+         className={styles.input}
+         type='search' 
+         name='search'
+         id='search'
+         value = {id} 
+         onChange = {handleChange}
+         style={{ color: 'white' }} 
+         />
+
+         {/* <button className={styles.button} onClick={handleClick}>Add</button>  */}
+         <MdPersonAddAlt1 className={styles.button} onClick={handleClick}/>
+         <span className={`${styles.button} ${styles.randomButton}`} onClick={() => onSearch(handleRandom())}>
+         ʀᴀɴᴅᴏᴍ
+      </span>
+            </div>
+   );
+}
+export default SearchBar;

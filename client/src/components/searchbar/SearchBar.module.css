@@ -1,0 +1,102 @@
+.container {
+   font-family: 'Orbitron', sans-serif;
+   display: flex;
+   justify-content: space-between; 
+   align-items: center;
+   /* background-color: rgba(235, 88, 167, 0.2);;  */
+   padding: 10px; 
+   margin-bottom: 149px;
+   margin-top:1px;
+   background: transparent;
+   z-index: 1;;
+ }
+.button {
+   font-family: 'Orbitron', sans-serif;
+   --glow-color: white;
+   --glow-spread-color: rgba(30, 191, 231, 0.781);
+   --enhanced-glow-color: rgb(44, 191, 231);
+   --btn-color: darkslategrey;
+   border: .1em solid var(--glow-color);
+   padding: 10px;
+   color: var(--glow-color);
+   font-size: 23px;
+   margin: 1px;
+   background-color: var(--btn-color);
+   border-radius: 10px;
+   outline: none;
+  box-shadow: 0 0 0.2em 0.1em var(--glow-color), 
+              0 0 1em 0.2em var(--glow-spread-color), 
+              inset 0 0 0.1em 0.05em var(--glow-color); 
+   text-shadow: 0 0 .1em var(--glow-color);
+   position: relative;
+   transition: all 0.5s;
+   opacity: 0.73;
+   font-weight: bold;
+   cursor: pointer;
+  }
+
+  .randomButton {
+   font-family: 'Orbitron', sans-serif;
+   --glow-color: white;
+   --glow-spread-color: rgba(64, 171, 242, 0.781);
+   --enhanced-glow-color: rgb(52, 160, 222);
+   --btn-color: darkslategrey;
+   border: .1em solid var(--glow-color);
+   padding: 10px;
+   color: var(--glow-color);
+   font-size: 16px;
+   margin: 1px;
+   background-color: var(--btn-color);
+   border-radius: 10px;
+   outline: none;
+  box-shadow: 0 0 0.2em 0.1em var(--glow-color), 
+              0 0 1em 0.2em var(--glow-spread-color), 
+              inset 0 0 0.1em 0.05em var(--glow-color); 
+   text-shadow: 0 0 .1em var(--glow-color);
+   position: relative;
+   transition: all 0.5s;
+   opacity: 0.73;
+   font-weight: bold;
+   cursor: pointer;
+ }
+  
+  .button:hover {
+   color: var(--btn-color);
+   background-color: var(--glow-color);
+   box-shadow: 0 0 1em .2em var(--glow-color),
+          0 0 2em 1em var(--glow-spread-color),
+          inset 0 0 .75em .2em var(--glow-color);
+  }
+  
+  .button:active {
+   box-shadow: 0 0 0.6em .2em var(--glow-color),
+          0 0 2.5em 2em var(--glow-spread-color),
+          inset 0 0 .5em .2em var(--glow-color);
+  }
+
+.input{
+   font-family: 'Patrick Hand SC';
+   --btn-color:darkslategrey;
+   border: .1em solid var(--glow-color);
+   padding: 10px;
+   color: var(--glow-color);
+   font-size: 19px;
+   margin: 10px;
+   background-color: var(--btn-color);
+   border-radius: 10px;
+   outline: none;
+  box-shadow: 0 0 0.2em 0.1em var(--glow-color), 
+              0 0 1em 0.2em var(--glow-spread-color), 
+              inset 0 0 0.1em 0.05em var(--glow-color); 
+   position: relative;
+   transition: all 0.5s;
+   opacity: 1;
+   font-family: 'Orbitron', sans-serif;
+   width: 200px;
+}
+
+::placeholder {
+   color: white ;
+   font-size: 14px;
+
+ }

@@ -25,15 +25,10 @@ export default function Detail(props) {
    }, [id]);
 
   return (
-     <div style= {{backgroundColor: "darkgray", pagging:"20px", borderRadius:"20px"}}>
-        <h1>Detail</h1>
+     <div style= {{backgroundColor: "darkolivegreen", borderRadius:"20px"}}>
         <h2>{character.name}</h2>
-        <img src={character.image} alt={character.name} />
-        <h3>Status: {character.status}</h3>
-        <h3>Specie: {character.species}</h3>
-        <h3>Gender: {character.gender}</h3>
-        <h3>Origin: {character.origin?.name}</h3>
-        <h3>Location: {character.location?.name}</h3>
+        <img src={character.image} alt={character.name} style={{ width: "100%", borderRadius: "10px" }} />
+     
      </div>
   );
 }

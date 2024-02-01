@@ -18,6 +18,7 @@ const API_KEY = "henrystaff";
 
 function App() {
    
+   
    const navigate = useNavigate();
    const location = useLocation();
    const dispatch = useDispatch();
@@ -76,6 +77,9 @@ function App() {
 
    return (
       <div className='App'>
+           {/* Lógica para mostrar u ocultar el overlay-text */}
+      {location.pathname === "/home"}
+
          {
             location.pathname !== "/" ? <Nav onSearch={onSearch} logout={logout} /> : null
          }

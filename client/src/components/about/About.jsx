@@ -5,14 +5,19 @@ const About = () => {
     <div className={styles.flipCard}>
       <div className={styles.flipCardInner}>
         <div className={styles.flipCardFront}>
-          <h3>App created by:</h3>
-          <h1>Tobias Agustin Insaurralde</h1>
+          <h3>𝐀𝐩𝐩 𝐜𝐫𝐞𝐚𝐭𝐞𝐝 𝐛𝐲:</h3>
+          <h1>𝐓𝐨𝐛𝐢𝐚𝐬 𝐀𝐠𝐮𝐬𝐭𝐢𝐧 𝐈𝐧𝐬𝐚𝐮𝐫𝐫𝐚𝐥𝐝𝐞</h1>
         </div>
         <div className={styles.flipCardBack}>
-          <div className={styles.Description}>
-            <p className={styles.Description}>
-              Hi, I am a Full-Stack student at SoyHenry academy.
-              I specialize in technologies such as JavaScript, React, Redux, CSS, HTML Express, and Node.js,
+          <div className={styles.description}>
+            <p className={styles.description}>
+            𝐇𝐢, 𝐈𝐦 𝐚 𝐅𝐮𝐥𝐥-𝐒𝐭𝐚𝐜𝐤 𝐒𝐭𝐮𝐝𝐞𝐧𝐭 𝐚𝐭 "𝐒𝐨𝐲𝐇𝐞𝐧𝐫𝐲" 𝐚𝐜𝐚𝐝𝐞𝐦𝐲.
+            </p>
+            <p className={styles.description}>
+            𝐎𝐫𝐢𝐠𝐢𝐧: 𝐂𝐨𝐫𝐫𝐢𝐞𝐧𝐭𝐞𝐬, 𝐀𝐫𝐠𝐞𝐧𝐭𝐢𝐧𝐚.
+            </p>
+            <p className={styles.description}>
+            𝐒𝐊𝐈𝐋𝐋𝐒: 𝐇𝐓𝐌𝐋-𝐂𝐒𝐒-𝐉𝐚𝐯𝐚𝐒𝐜𝐫𝐢𝐩𝐭-𝐑𝐄𝐀𝐂𝐓-𝐑𝐄𝐃𝐔𝐗-𝐄𝐗𝐏𝐑𝐄𝐒𝐒 𝐉𝐒-𝐍𝐎𝐃𝐄 𝐉𝐒
             </p>
             <div className={styles.socialbar}>
               <div>

@@ -11,7 +11,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -29,21 +28,12 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url("https://r4.wallpaperflare.com/wallpaper/874/783/771/rick-and-morty-drawing-rick-sanchez-morty-smith-wallpaper-c59eb4972e788bf3278d348d32a2cfcb.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%; /* Ajusta el tamaño al 100% de la anchura y altura del contenedor */
-  background-attachment: fixed; /* Fija la imagen de fondo */
-  background-position: center top;
-  position: relative;
 }
-
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
-
 
 button {
   border-radius: 8px;
@@ -76,8 +66,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-h1 {
-  font-size: 16px;
-  color: #111
-}
-

@@ -1,74 +1,101 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import validation from "../../utils/validation";
-const banner = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/2560px-Rick_and_Morty.svg.png";
+import styles from "./Form.module.css";
+import Frases from "../frases/Frases";
 
-export default function Form(props) {
+const Form = ({ login }) => {
+  useEffect(() => {
+    document.body.style.backgroundImage = `url('/src/assets/image/form.jpg')`;
+    return () => {
+      document.body.style.backgroundImage = null;
+    };
+  }, []);
 
   const [userData, setUserData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
-  const [errors, setErrors] = useState({
-    email: "Ingrese su email",
-    password: "Ingrese su password"
-  });
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUserData({
       ...userData,
-      [name]: value
+      [name]: value,
     });
-    setErrors(validation({
-      ...userData,
-      [name]: value
-    }));
-  }
+    setErrors(
+      validation({
+        ...userData,
+        [name]: value, //viene asi para q agarre en tiepo real todo. Si pongo solo userData, queda desfasado el ultimo caracter para validar.
+      })
+    );
+  };
 
-  const handleSubmit = event => {
+  const hanleSubmit = (event) => {
     event.preventDefault();
-    props.login(userData);
-  }
+    login(userData);
+  };
 
   return (
-    <div>
-      <img
-        src={banner}
-        style={{width:"300px", backgroundColor: "transparent" }}
-        alt=""
-      />
+    <div className={styles.body}>
+      <div>
+        <Frases />
+      </div>
 
-      <form onSubmit={handleSubmit} >
+      <div className={styles.form}>
+        <form onSubmit={hanleSubmit}>
 
-        <label>Email: </label>
-        <input
-          type="text"
-          key="email"
-          name="email"
-          value={userData.email}
-          placeholder="Ingresar email..."
-          onChange={handleChange}
-        />
-        <p style={{color:"red"}}>{ errors.email ? errors.email : null }</p>
+          {/* <label> Email </label> */}
+          <div className={styles.inputWrapper}>
+            <input
+              className={styles.inputBox}
+              type="text"
+              key="email"
+              name="email"
+              value={userData.email}
+              placeholder="Enter your email"
+              autoComplete='off'
+              // placeholder="Ingrese su email"
+              onChange={handleChange}
+            />
+            <span className={styles.underline}></span>
+          </div>
+          {errors.email && <p className={styles.error}>{errors.email}</p>}
 
-        <label>Password: </label>
-        <input
-          type="password"
-          key="password"
-          name="password"
-          value={userData.password}
-          placeholder="Ingresar password..."
-          onChange={handleChange}
-        />
-        <p style={{color:"red"}}>{ errors.password && errors.password }</p>
-        <hr />
+          {/* <hr className={styles.hr} /> */}
 
-        <button
-          type="submit"
-          disabled={ errors.email || errors.password }
-        >Enviar</button>
+          {/* <label> Password </label> */}
+          <div className={styles.inputWrapper}>
+            <input
+              className={styles.inputBox}
+              type="password"
+              key="password"
+              name="password"
+              placeholder="Enter your password"
+              // placeholder="ingrese su contraseña"
+              value={userData.password}
+              onChange={handleChange}
+            />
+            <span className={styles.underline}></span>
+          </div>
+          {errors.email && <p className={styles.error}>{errors.password}</p>}
+{/* 
+          <hr className={styles.hr} /> */}
 
-      </form>
+          <button
+            className={styles.button}
+            type="submit"
+            disabled={errors.email || errors.password} // Si existe error en email o password deshabilitalo
+          >
+            {" "}
+            Login{" "}
+          </button>
+        </form>
+      </div>
+      {/* <img src="src/assets/image/FormFrase.png" width="20%"  /> */}
     </div>
-  )
-}
+  );
+};
+
+export default Form;

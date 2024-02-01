@@ -1,32 +1,36 @@
-.container{
-    background-color: grey;
+.container {
+    background-color: transparent;
     width: 250px;
-    height:500px;
+    height: 560px;
     margin: 20px;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 10px blue ;
-    color :darkslategrey ;
-     &:hover {
-     box-shadow :0 5px 5px white ;
+    box-shadow: 0 10px 10px white;
+    cursor: pointer;
+    backdrop-filter: blur(14px);
+    color: darkslategrey;
+    position: relative;
+    gap: 20px;
+    flex-direction: column;
+    top:-120px;
   }
-}
-
-
-.container img{
-    width: 139px;
-    box-shadow:  0 10px 10px black ;
+  
+  .container img {
+    width: 130px;
+    box-shadow: 0 10px 10px darkcyan;
     border-radius: 5px;
-}
-
-.container button {
+  }
+  
+  .container button {
     background-color: darkcyan;
-    margin:10px;
-    &:hover{
-        background-color: darkcyan;
+    margin: 10px;
+    &:hover {
+      background-color: darkcyan;
     }
-}
-
-.container h2 {
-    color : white; 
-}
+  }
+  
+  .container h2 {
+    color: white;
+    margin-bottom: 10px;
+  }
+  
