@@ -1,101 +1,73 @@
-import { useState, useEffect } from "react";
-import validation from "../../utils/validation";
-import styles from "./Form.module.css";
-import Frases from "../frases/Frases";
+import React, { useState } from "react";
+const banner = "https://http2.mlstatic.com/D_NQ_NP_898822-MLA44334482553_122020-O.webp";
 
-const Form = ({ login }) => {
-  useEffect(() => {
-    document.body.style.backgroundImage = `url('/src/assets/image/form.jpg')`;
-    return () => {
-      document.body.style.backgroundImage = null;
-    };
-  }, []);
+export default function Form(props) {
 
   const [userData, setUserData] = useState({
     email: "",
-    password: "",
+    password: ""
   });
-
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    email: "Ingrese su email",
+    password: "Ingrese su password"
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUserData({
       ...userData,
-      [name]: value,
+      [name]: value
     });
-    setErrors(
-      validation({
-        ...userData,
-        [name]: value, //viene asi para q agarre en tiepo real todo. Si pongo solo userData, queda desfasado el ultimo caracter para validar.
-      })
-    );
-  };
+    setErrors(validation({
+      ...userData,
+      [name]: value
+    }));
+  }
 
-  const hanleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
-    login(userData);
-  };
+    props.login(userData);
+  }
 
   return (
-    <div className={styles.body}>
-      <div>
-        <Frases />
-      </div>
+    <div>
+      <img
+        src={banner}
+        style={{width:"300px"}}
+        alt=""
+      />
 
-      <div className={styles.form}>
-        <form onSubmit={hanleSubmit}>
+      <form onSubmit={handleSubmit} >
 
-          {/* <label> Email </label> */}
-          <div className={styles.inputWrapper}>
-            <input
-              className={styles.inputBox}
-              type="text"
-              key="email"
-              name="email"
-              value={userData.email}
-              placeholder="Enter your email"
-              autoComplete='off'
-              // placeholder="Ingrese su email"
-              onChange={handleChange}
-            />
-            <span className={styles.underline}></span>
-          </div>
-          {errors.email && <p className={styles.error}>{errors.email}</p>}
+        <label>Email: </label>
+        <input
+          type="text"
+          key="email"
+          name="email"
+          value={userData.email}
+          placeholder="Ingresar email..."
+          onChange={handleChange}
+        />
+        <p style={{color:"red"}}>{ errors.email ? errors.email : null }</p>
 
-          {/* <hr className={styles.hr} /> */}
+        <label>Password: </label>
+        <input
+          type="password"
+          key="password"
+          name="password"
+          value={userData.password}
+          placeholder="Ingresar password..."
+          onChange={handleChange}
+        />
+        <p style={{color:"red"}}>{ errors.password && errors.password }</p>
+        <hr />
 
-          {/* <label> Password </label> */}
-          <div className={styles.inputWrapper}>
-            <input
-              className={styles.inputBox}
-              type="password"
-              key="password"
-              name="password"
-              placeholder="Enter your password"
-              // placeholder="ingrese su contraseña"
-              value={userData.password}
-              onChange={handleChange}
-            />
-            <span className={styles.underline}></span>
-          </div>
-          {errors.email && <p className={styles.error}>{errors.password}</p>}
-{/* 
-          <hr className={styles.hr} /> */}
+        <button
+          type="submit"
+          disabled={ errors.email || errors.password }
+        >Enviar</button>
 
-          <button
-            className={styles.button}
-            type="submit"
-            disabled={errors.email || errors.password} // Si existe error en email o password deshabilitalo
-          >
-            {" "}
-            Login{" "}
-          </button>
-        </form>
-      </div>
-      {/* <img src="src/assets/image/FormFrase.png" width="20%"  /> */}
+      </form>
     </div>
-  );
-};
-
-export default Form;
+  )
+}
